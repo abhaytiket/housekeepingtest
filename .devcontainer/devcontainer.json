@@ -1,0 +1,23 @@
+{
+    "name": "HOUSEKEEPINGTEST",
+    "dockerComposeFile": "docker-compose.yml",
+    "workspaceFolder": "/app",
+    "service": "housekeepingtest",
+    "customizations": {
+        "vscode": {
+          "settings": {},
+          "extensions": [
+            "ms-python.python",
+            "eamodio.gitlens",
+            "clemenspeters.format-json",
+            "GitHub.copilot",
+            "ms-vsliveshare.vsliveshare"
+          ]
+        }
+    },
+    "features": {
+      "git": "os-provided"
+    },
+    "overrideCommand": true,
+    "postCreateCommand": "pip install -r requirements.txt"
+}

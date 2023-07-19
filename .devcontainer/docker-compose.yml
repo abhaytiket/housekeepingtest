@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  housekeepingtest:
+    build: .
+    cpus: "1"
+    mem_reservation: "10M"
+    mem_limit: "512M"
+    restart: always
+    env_file:
+      - .env.local
+    volumes:
+      - ..:/app
+    networks:
+      - housekeepingtest-net
+  housekeepingtest-selenium-chrome:
+    image: seleniarm/standalone-chromium
+    restart: always
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+      - "5900:5900"
+    shm_size: 2g
+    networks:
+      - housekeepingtest-net
+networks:
+  housekeepingtest-net:
+    driver: bridge
