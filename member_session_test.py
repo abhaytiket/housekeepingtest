@@ -83,10 +83,13 @@ for url in inf:
     driver.refresh()
     new_token_id = get_token_id(driver, url)
     
-    if old_token_id == new_token_id:
+    token_mismatch = old_token_id == new_token_id
+    error_message_shown = ("Tenang, kami sedang beraksi mengatasinya. Coba lagi, yuk!" in driver.page_source) and ("Maaf ya, ada sedikit gangguan" in driver.page_source) 
+    if token_mismatch or error_message_shown:
         sys.stdout.write(url)
-    
+
     close_selenium_driver(driver)
 inf.close()
 print("Test execution complete")
+
 ##execution ends
